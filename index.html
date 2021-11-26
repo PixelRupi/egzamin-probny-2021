@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pl" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Konfigurator wyposażenia</title>
+    <link rel="stylesheet" href="styl.css">
+  </head>
+  <body>
+    <div id="glowna">
+      <div id="baner">
+        <img src="baner.jpg" alt="baner">
+      </div>
+
+      <div id="lewy">
+        <form id="form">
+          <hr>
+          <h2>Kolor</h2>
+            <select onclick="samochod()">
+              <option name="kolor" value="szary">szary</option>
+              <option name="kolor" value="niebieski">niebieski</option>
+              <option name="kolor" value="czerwony">czerwony</option>
+              <option name="kolor" value="zolty">żółty</option>
+              <option name="kolor" value="zielony">zielony</option>
+            </select>
+          <hr>
+          <h2>Felgi</h2>
+              <input onclick="samochod()" type="radio" checked name="felgi" value="Stalowe"> Stalowe <br>
+              <input onclick="samochod()" type="radio" name="felgi" value="Aluminiowe"> Aluminiowe <br>
+          <hr>
+          <h2>Doposażenie</h2>
+              <input onclick="samochod()" type="checkbox" id="czujniki" value="czujniki">Czujniki parkowania<br>
+              <input onclick="samochod()" type="checkbox" id="climatronic" value="climatronic">Climatronic<br>
+              <input onclick="samochod()" type="checkbox" id="nawigacja" value="nawigacja">Nawigacja<br>
+          <hr>
+        </form>
+      </div>
+
+      <div id="prawy">
+        <h1>Twój samochód</h1>
+        <img id="samochod_prawa" src="szary.png" alt="foto">
+        <h1>Wycena:</h1>
+        <p id="wycena">Cena bazowa 75000zł</p>
+
+        <script type="text/javascript">
+          function samochod(id_koloru) {
+            var cena = 75000;
+            var tekst = "";
+            var select = document.getElementsByName('kolor');
+            for (var i = 0; i < select.length; i++) {
+              if (select[i].selected) {
+                var kolor = select[i].value;
+              }
+            }
+
+            switch (kolor) {
+              case "szary":
+                  document.getElementById('samochod_prawa').src="szary.png";
+                break;
+
+              case "niebieski":
+                  document.getElementById('samochod_prawa').src="niebieski.png";
+                  cena+=9000;
+                  tekst += "Lakier: 9000zł <br>";
+                break;
+
+              case "czerwony":
+                  document.getElementById('samochod_prawa').src="czerwony.png";
+                  cena+=9000;
+                  tekst += "Lakier: 9000zł <br>";
+                break;
+
+              case "zolty":
+                  document.getElementById('samochod_prawa').src="zolty.png";
+                  cena+=9000;
+                  tekst += "Lakier: 9000zł <br>";
+                break;
+
+              case "zielony":
+                  document.getElementById('samochod_prawa').src="zielony.png";
+                  cena+=9000;
+                  tekst += "Lakier: 9000zł <br>";
+                break;
+                }
+
+              var select = document.getElementsByName('felgi');
+              for (var a = 0; a < select.length; a++) {
+                if (select[a].checked) {
+                  var felgi = select[a].value;
+                  console.log(felgi);
+                }
+              }
+
+              switch (felgi) {
+                case "Stalowe":
+                    cena += 0;
+                    tekst += "Felgi Stalowe <br>";
+                  break;
+
+                case "Aluminiowe":
+                    cena += 7000;
+                    tekst += "Felgi Aluminiowe: 7000zl <br>";
+                  break;
+              }
+
+              if (document.getElementById('czujniki').checked) {
+                var cena = cena + 6500;
+                tekst += "Czujniki Parkowania: 6500zł <br>";
+              }
+
+              if (document.getElementById('climatronic').checked) {
+                var cena = cena + 8500;
+                tekst += "Climatronic: 8500zł <br>";
+              }
+
+              if (document.getElementById('nawigacja').checked) {
+                var cena = cena + 5000;
+                tekst += "Nawigacka: 5000zł <br>";
+              }
+              document.getElementById('wycena').innerHTML="Cena bazowa: 75000zł" + "<br>" + tekst + "<br>" + "<b> Razem " + cena + " zł</b>";
+            }
+        </script>
+      </div>
+
+      <div id="stopka">
+        <p>Autor strony: <i>00000000000</i></p>
+      </div>
+    </div>
+  </body>
+</html>
